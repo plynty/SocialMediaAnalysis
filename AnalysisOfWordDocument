@@ -1,0 +1,25 @@
+library(tm);
+##library(RTextTools);
+##library(topicmodels);
+##library(twitteR);
+setwd("~/Downloads/")
+
+##readLines("whatever Document one has")
+twitter<- readLines("whatever Document one has")
+
+####df <- do.call("rbind", lapply(twitter_feed, as.data.frame));
+myCorpus <- Corpus(VectorSource(twitter));
+##k = length(docs3);
+##myCorpus = Corpus(VectorSource(docs));
+myCorpus = tm_map(myCorpus, content_transformer(tolower));
+myCorpus = tm_map(myCorpus, removePunctuation)
+myCorpus = tm_map(myCorpus, removeNumbers)
+myCorpus = tm_map(myCorpus, removeWords, stopwords("english"))
+myDtm = TermDocumentMatrix(myCorpus, control = list(minWordLength = 1))
+m = as.matrix(myDtm)
+v = sort(rowSums(m), decreasing = TRUE)
+library(wordcloud)
+set.seed(4363)
+##wordcloud(names(v), v, min.freq = 50)
+wordcloud(names(v), v, max.freq=100, scale=c(5, .1), colors=brewer.pal(6, "Dark2"))   
+
