@@ -7,16 +7,9 @@ library("twitteR")
 library("wordcloud")
 library("tm")
 library("RColorBrewer")
-##To get consumer key,consumer secret, access token, access secret you log into your twitter(make sure you have a Twitter account),search for "Twitter API Key" and go to Application settings.
-consumer_key = 'Your consumer Key'
-consumer_secret = 'Your consumer secret'
-access_token = 'Your access token'
-access_secret = 'Your access secret'
 
-setup_twitter_oauth(consumer_key,
-                    consumer_secret,
-                    access_token,
-                    access_secret);
+source("tiwtterAuthentication.R")
+
 #n=1500 is the number of tweets I want to call.
 twitter_feed <- searchTwitter('Whatever word you are searching for', n=1500);
 ##saving the text
