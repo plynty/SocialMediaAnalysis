@@ -2,15 +2,16 @@ library(tm);
 ##library(RTextTools);
 ##library(topicmodels);
 ##library(twitteR);
+##Set working directory to the file where the document is.
 setwd("~/Downloads/")
 
 ##readLines("whatever Document one has")
-twitter<- readLines("whatever Document one has")
+twitter<- readLines("whatever Document one has eg. tatenda.txt")
 
 ####df <- do.call("rbind", lapply(twitter_feed, as.data.frame));
 myCorpus <- Corpus(VectorSource(twitter));
-##k = length(docs3);
 ##myCorpus = Corpus(VectorSource(docs));
+##Cleaning the document
 myCorpus = tm_map(myCorpus, content_transformer(tolower));
 myCorpus = tm_map(myCorpus, removePunctuation)
 myCorpus = tm_map(myCorpus, removeNumbers)
