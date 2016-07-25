@@ -1,3 +1,7 @@
+mydir <- "Directory of the repository"
+
+setwd(mydir)
+
 install.packages("twitteR")
 install.packages("wordcloud")
 install.packages("tm")
